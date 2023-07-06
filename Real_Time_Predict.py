@@ -5,12 +5,13 @@ import numpy as np
 
 from main import mp_holistic, mediapipe_detection, draw_styled_landmarks, extract_keypoints, actions
 
-model = keras.models.load_model("action.h5")
-if __name__=='__main__':
+
+if __name__ == '__main__':
+    model = keras.models.load_model("action.h5")
     sequence = []
     sentence = []
     predictions = []
-    threshold = 0.4
+    threshold = 0.65
 
     cap = cv2.VideoCapture(0)
     with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
@@ -33,7 +34,7 @@ if __name__=='__main__':
                 print(actions[np.argmax(res)])
                 predictions.append(np.argmax(res))
             #visuals
-                if(np.unique(predictions[-10:]))[0] == np.argmax(res):
+                if(np.unique(predictions[-15:]))[0] == np.argmax(res):
                     if res[np.argmax(res)] > threshold:
                         if len(sentence) > 0:
                             if actions[np.argmax(res)] != sentence[-1]:
