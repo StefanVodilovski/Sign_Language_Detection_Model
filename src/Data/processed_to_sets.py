@@ -4,7 +4,7 @@ import numpy as np
 from keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 
-DATA_PATH = os.path.join("C:\\Users\\vodil\\PycharmProjects\\Sign Language Detection\\Data\\processed\\MP_DATA\\")
+DATA_PATH = os.path.join("../../Data/processed/MP_DATA/")
 
 
 def get_actions():

@@ -14,7 +14,7 @@ def get_actions():
 def train_model(train_x, train_y):
     actions = get_actions()
 
-    log_dir = os.path.join('logs')
+    log_dir = os.path.join('../../models/logs')
     callback = TensorBoard(log_dir=log_dir)
 
     model = Sequential()
@@ -30,5 +30,5 @@ def train_model(train_x, train_y):
     model.fit(train_x, train_y, epochs=90, callbacks=[callback])
     model.summary()
     n = len(actions)
-    model.save(f'C:\\Users\\vodil\\PycharmProjects\\Sign Language Detection\\Models\\action({n}).h5')
-    print(f'Model saved as action{n}.h5')
+    model.save(f'../../Models/action({n})1.h5')
+    print(f'Model saved as action{n}.1.h5')

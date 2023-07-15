@@ -5,7 +5,8 @@ import numpy as np
 
 import mediapipe as mp
 
-DATA_PATH = os.path.join("C:\\Users\\vodil\\PycharmProjects\\Sign Language Detection\\Data\\processed\\MP_DATA")
+DATA_PATH = os.path.join("../../Data/processed/MP_DATA")
+# DATA_PATH = os.path.join("C:\\Users\\vodil\\PycharmProjects\\Sign Language Detection\\Data\\processed\\MP_DATA")
 mp_holistic = mp.solutions.holistic  # holistic model
 mp_drawing = mp.solutions.drawing_utils  # drawing utils
 

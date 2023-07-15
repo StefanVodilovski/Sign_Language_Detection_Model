@@ -13,11 +13,11 @@ def get_actions():
     return np.array(files)
 
 if __name__ == '__main__':
-    model = keras.models.load_model("../models/action(4).h5")
+    model = keras.models.load_model("../models/action(4)1.h5")
     sequence = []
     sentence = []
     predictions = []
-    threshold = 0.55
+    threshold = 0.65
 
     actions = get_actions()
 
@@ -42,13 +42,14 @@ if __name__ == '__main__':
                 print(actions[np.argmax(res)])
                 predictions.append(np.argmax(res))
             #visuals
-                if(np.unique(predictions[-10:]))[0] == np.argmax(res):
+                if(np.unique(predictions[-15:]))[0] == np.argmax(res):
                     if res[np.argmax(res)] > threshold:
-                        if len(sentence) > 0:
-                            if actions[np.argmax(res)] != sentence[-1]:
+                        if actions[np.argmax(res)] != 'no_action':
+                            if len(sentence) > 0:
+                                if actions[np.argmax(res)] != sentence[-1]:
+                                    sentence.append(actions[np.argmax(res)])
+                            else:
                                 sentence.append(actions[np.argmax(res)])
-                        else:
-                            sentence.append(actions[np.argmax(res)])
 
                 if len(sentence) > 5:
                     sentence = sentence[-5:]
