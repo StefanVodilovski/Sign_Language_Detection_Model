@@ -3,7 +3,7 @@
 ## 1) How to start the project
    --- You need to clone this repo:
 ````
-   git clone https://github.com/StefanVodilovski/sign-language-detection.git
+   git clone [https://github.com/StefanVodilovski/sign-language-detection.git](https://github.com/StefanVodilovski/Sign_Language_Detection_Model.git)
 ````
    -- Write the following command to install all dependencies:
 ````
