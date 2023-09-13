@@ -30,5 +30,5 @@ def train_model(train_x, train_y):
     model.fit(train_x, train_y, epochs=90, callbacks=[callback])
     model.summary()
     n = len(actions)
-    model.save(f'../../Models/action({n})1.h5')
-    print(f'Model saved as action{n}.1.h5')
+    model.save(f'../../Models/actions({n}).h5')
+    print(f'Model saved as actions({n}).h5')

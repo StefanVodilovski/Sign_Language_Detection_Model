@@ -4,7 +4,6 @@ import cv2
 import keras.models
 import numpy as np
 
-
 from src.main import mp_holistic, mediapipe_detection, draw_styled_landmarks, extract_keypoints
 
 
@@ -13,11 +12,11 @@ def get_actions():
     return np.array(files)
 
 if __name__ == '__main__':
-    model = keras.models.load_model("../models/action(4)1.h5")
+    model = keras.models.load_model("../Models/actions.h5")
     sequence = []
     sentence = []
     predictions = []
-    threshold = 0.65
+    threshold = 0.60
 
     actions = get_actions()
 
@@ -42,7 +41,7 @@ if __name__ == '__main__':
                 print(actions[np.argmax(res)])
                 predictions.append(np.argmax(res))
             #visuals
-                if(np.unique(predictions[-15:]))[0] == np.argmax(res):
+                if(np.unique(predictions[-13:]))[0] == np.argmax(res):
                     if res[np.argmax(res)] > threshold:
                         if actions[np.argmax(res)] != 'no_action':
                             if len(sentence) > 0:
