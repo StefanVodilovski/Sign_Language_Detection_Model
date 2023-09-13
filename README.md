@@ -21,10 +21,10 @@
    -the model in Models is trained for 5 predictions, actions for hello, i love you, thanks, please and no action(when you stand/ sit still)
 
 ## 4) the src folder
-   - in the src folder there are 4 major files:
-      -The main.py file:
-      This is the file where we initialize the starting 3 actions and create data for them so we can train the model with
-      -The model.py file:
-         Training the model on the created data
-      -Real_Time_Predict.py
-         Get the coresponding model stored in the Models file and launch the camera for detection (you can modify the threshold for better accuracy when predicting) 
+   - In the src folder there are 4 major files:
+   - The main.py file:
+   - This is the file where we initialize the starting 3 actions and create data for them so we can train the model with
+   - The model.py file:
+   - Training the model on the created data
+   - Real_Time_Predict.py
+   - Get the coresponding model stored in the Models file and launch the camera for detection (you can modify the threshold for better accuracy when predicting) 
