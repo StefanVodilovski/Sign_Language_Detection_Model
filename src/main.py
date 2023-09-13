@@ -1,11 +1,7 @@
 import cv2
 import numpy as np
 import os
-from matplotlib import pyplot as plt
-import time
 import mediapipe as mp
-from sklearn.model_selection import train_test_split
-from tensorflow.python.keras.utils.np_utils import to_categorical
 
 
 DATA_PATH = os.path.join('../MP_DATA')
@@ -33,14 +29,6 @@ def mediapipe_detection(image, model):
     image.flags.writeable = True
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     return image, results
-
-
-def draw_landmarks(image, results):
-    mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACEMESH_CONTOURS)
-    mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS)
-    mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS)
-    mp_drawing.draw_landmarks(image, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS)
-
 
 def draw_styled_landmarks(image, results):
     mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACEMESH_CONTOURS,
@@ -72,7 +60,7 @@ def extract_keypoints(results):
 
 if __name__ == '__main__':
 
-    cap = cv2.VideoCapture(0)  # get source
+    cap = cv2.VideoCapture(0) # get source
     with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
         for action in actions:
             for sequence in range(no_sequences):
@@ -94,6 +82,7 @@ if __name__ == '__main__':
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1,
                                     cv2.LINE_AA)
                         cv2.imshow('OpenCV Feed', image)  # show
+
                     keypoints = extract_keypoints(results)
                     npy_path = os.path.join(DATA_PATH,action,str(sequence),str(frame_number))
                     np.save(npy_path,keypoints)
@@ -102,8 +91,6 @@ if __name__ == '__main__':
 
                     if cv2.waitKey(10) & 0xFF == ord('q'):
                         break
-
-            #landmarks
 
         cap.release()
         cv2.destroyAllWindows()
